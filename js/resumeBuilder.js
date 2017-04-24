@@ -59,7 +59,7 @@ This is empty on purpose! Your code to build the resume will go here.
       projects: [{
         title: "Classic Game Clone",
         dates: "April 2017",
-        description: "Clone of the classic game, Frogger. Udacity provided the art assets and game engine. Coded player, enemies, and other game entities in JavaScript's object­oriented pseudo­classical style. Created enemy subclasses with different movement patterns and sprites (edited art assets in GIMP).",
+        description: "Clone of the classic game, Frogger",
         images: ["images/game.png"]
       }],
       display: function(){
@@ -105,7 +105,7 @@ This is empty on purpose! Your code to build the resume will go here.
         var majorsHtmlArr = [];
         for (var c = 0; c < model.education.schools[i].majors.length; c++){
           majorsHtmlArr.push(HTMLschoolMajor.replace("%data%", model.education.schools[i].majors[c]));
-        };
+        }
         schoolArr.push({
           nameHtml: HTMLschoolName.replace("%data%", model.education.schools[i].name),
           locationHtml: HTMLschoolLocation.replace("%data%", model.education.schools[i].location),
@@ -113,21 +113,21 @@ This is empty on purpose! Your code to build the resume will go here.
           majorsHtml: majorsHtmlArr,
           datesHtml: HTMLschoolDates.replace("%data%", model.education.schools[i].dates)
         });
-      };
+      }
 
       var onlineArr = [];
-      for (var i = 0; i < model.education.onlineCourses.length; i++){
+      for (var m = 0; m < model.education.onlineCourses.length; m++){
         onlineArr.push({
-          titleHtml: HTMLonlineTitle.replace("%data%", model.education.onlineCourses[i].title),
-          schoolHtml: HTMLonlineSchool.replace("%data%", model.education.onlineCourses[i].school),
-          datesHtml: HTMLonlineDates.replace("%data%", model.education.onlineCourses[i].dates),
-          urlHtml: HTMLonlineURL.replace("%data%", model.education.onlineCourses[i].url),
+          titleHtml: HTMLonlineTitle.replace("%data%", model.education.onlineCourses[m].title),
+          schoolHtml: HTMLonlineSchool.replace("%data%", model.education.onlineCourses[m].school),
+          datesHtml: HTMLonlineDates.replace("%data%", model.education.onlineCourses[m].dates),
+          urlHtml: HTMLonlineURL.replace("%data%", model.education.onlineCourses[m].url),
         });
-      };
+      }
       return {
         schoolArr: schoolArr,
         onlineArr: onlineArr
-      }
+      };
     },
     updateWorkHtml: function(){
       var workArr = [];
@@ -142,7 +142,6 @@ This is empty on purpose! Your code to build the resume will go here.
       }
       return workArr;
     },
-
     updateProjectsHtml: function(){
       var projectArr = [];
       for (var i = 0; i < model.projects.projects.length; i++){
@@ -158,7 +157,7 @@ This is empty on purpose! Your code to build the resume will go here.
 
     appendMap: function(){
       // Calls the initializeMap() function when the page loads
-      window.addEventListener('load', initializeMap);
+      window.addEventListener('load', octopus.initMap);
 
       // Vanilla JS way to listen for resizing of the window
       // and adjust map bounds
@@ -170,7 +169,7 @@ This is empty on purpose! Your code to build the resume will go here.
       $("#mapDiv").append(map);
     },
 
-    appendMap: function(){
+    initMap: function(){
       var locations;
 
       var mapOptions = {
@@ -338,16 +337,16 @@ This is empty on purpose! Your code to build the resume will go here.
         // use a for loop to add majors
         for (var c = 0; c < schoolArr[i].majorsHtml.length; c++){
           $(".education-entry:last").append(schoolArr[i].majorsHtml[c]);
-        };
-      };
+        }
+      }
 
-      for (var i = 0; i < onlineArr.length; i++){
+      for (i = 0; i < onlineArr.length; i++){
         $("#education").append(HTMLonlineClasses);
         $("#education").append(HTMLschoolStart);
         $(".education-entry:last").append(onlineArr[i].titleHtml+onlineArr[i].schoolHtml);
         $(".education-entry:last").append(onlineArr[i].datesHtml);
         $(".education-entry:last").append(onlineArr[i].urlHtml);
-      };
+      }
     },
     showProjectsHtml: function(){
       var projectArr = octopus.updateProjectsHtml();
@@ -372,4 +371,4 @@ This is empty on purpose! Your code to build the resume will go here.
     }
   };
   octopus.init();
- }())
+}());
