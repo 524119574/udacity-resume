@@ -309,11 +309,10 @@ This is empty on purpose! Your code to build the resume will go here.
       $("#header").prepend(HTMLheaderRole);
       $("#header").prepend(HTMLheaderName);
 
-      $("#topContacts").append(HTMLcontactGeneric);
-      $("#topContacts").append(HTMLmobile);
-      $("#topContacts").append(HTMLemail);
-      $("#topContacts").append(HTMLgithub);
-      $("#topContacts").append(HTMLlocation);
+      $("#topContacts, #footerContacts").append(HTMLmobile);
+      $("#topContacts, #footerContacts").append(HTMLemail);
+      $("#topContacts, #footerContacts").append(HTMLgithub);
+      $("#topContacts, #footerContacts").append(HTMLlocation);
 
       $("#header").append(HTMLbioPic);
       $("#header").append(HTMLwelcomeMsg);
